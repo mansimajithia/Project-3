@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Yelp Restaurant Success and Machine Learning</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light nav-padding">
+    <a class="navbar-brand nav-padding" style="color: white;" href=></a>
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> -->
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <h6 id="viz-text" class="text">Visualizations</h6>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="visualization_temp.html">Max Temperature</a>
+            <a class="dropdown-item" href="visualizations_humidity.html">Humidity</a>
+            <a class="dropdown-item" href="visualizations_cloudiness.html">Cloudiness</a>
+            <a class="dropdown-item" href="visualizations_wind.html">Wind Speed</a>
+          </div>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="comparison.html">Comparison</a>
+        </li> -->
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="cities.html">Data</a>
+        </li> -->
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 left-side">
+        <img src="data:image/png;base64,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"
+        class = "image-cropper profile-pic" alt="Yelp Logo">
+        <h1 class="text">Demystifying Machine Learning Through Yelp Restaurant Data</h1>
+        <br>
+        <h5 class="text">The purpose of this project was to build a Machine Learning Model that would predict the success of a restaurant
+          based on yelp-classified features of restaurant.
+        </h5>
+        <br>
+        <!-- <h7 class="presented-by text">Presented By:</h7> -->
+        <ul class="text presented-by"> Presented By:
+          <li>Bill White</li>
+          <li>Bosco Sitati</li>
+          <li>Ji Kim</li>
+          <li>Mansi Majithia</li>
+          <li>Pauline Li</li>
+        </ul>
+      </div>
+      <div class="col-md-8 right-side">
+        <h1 class="text">A Walk through of the project...</h1>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="card card-left" style="width: 20rem;">
+              <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Data Cleanup</h5>
+                <p class="card-text">Original Data included ____worth of data consisting of all different types of businesses. Due to the size of the data, we imported the data onto Amazon AWS and used Google Colab to clean up </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div>
+            <br>
+          </div>
+          <div class="col-sm-4">
+            <div class="card card-right" style="width: 20rem;">
+              <img src="..." class="card-img-top" alt="...">
+              <div class="card-body card-two">
+                <h5 class="card-title">Data Exploration</h5>
+                <p class="card-text">After data cleanup, we started preparing for Machine Learning by one-hot encoding each feature. We also added 
+                  an additional feature, density of restaurants nearby.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="card card-left card-bottom" style="width: 20rem;">
+              <img class="image" src="images/matrix.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Machine Learning</h5>
+                <p class="card-text">We built a Machine Learning Model using the Random Forest Classifier. Next we compared it to other models to confirm
+                  Random Forest was the best model.</p>
+                <a href="" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card card-right card-bottom" style="width: 20rem;">
+              <img class="image" src="images/tableau.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Tableau</h5>
+                <p class="card-text">Visualizations to analyze features and their role in the success of restaurants.</p>
+                <a href="https://public.tableau.com/profile/bosco.sitati#!/vizhome/Project3_15975163220020/Yelp-DataAnalysis-SentimentalAnalysis?publish=yes" target="_blank" class="btn btn-primary">Click to see Tableau visualization</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

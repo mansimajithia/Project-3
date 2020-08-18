@@ -1,0 +1,66 @@
+body{
+    background-color: black;
+}
+.left-side{
+    background-color: #2E1114;
+    border-radius: 12px
+}
+.text{
+    color: white;
+}
+.right-side{
+    background-color: #501B1D;
+    border-radius: 12px;
+}
+.image-cropper {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    background-position: 0 -50px; 
+    width: 200px; 
+    height: 100px;
+}
+.profile-pic {
+  display: inline;
+  margin: 14px auto;
+  margin-left: 3%; //centers the image
+  height: 100%;
+  width: auto;
+}
+
+.presented-by{
+    margin-top: 30px;
+    margin-left: 181px;
+}
+
+.cart-two{
+    border:14px;
+    margin-left: 32px;
+}
+.image{
+    height:55%;
+    width: 60%;
+}
+.card-right{
+    margin-left: 150px;
+}
+/* .card-left{
+    margin-left: -50px;
+} */
+.card{
+    margin-top:8px;
+    /* margin-left:35px; */
+    background-color: #EEE2DC;
+}
+.card-bottom{
+    margin-top:8px;
+}
+.card-left{
+    margin-left:35px;
+}
+.btn-primary{
+    background-color:#2E1114 ;
+    border-color:#2E1114;
+}
